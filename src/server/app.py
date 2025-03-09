@@ -137,7 +137,9 @@ class ZerePyServer:
             """Execute a single agent action"""
             if not self.state.cli.agent:
                 raise HTTPException(status_code=400, detail="No agent loaded")
-            
+            # try to attach the agent system prompt to the action params
+            if action_request.params:
+                action_request.params.append(self.state.cli.agent._construct_system_prompt())
             try:
                 result = await asyncio.to_thread(
                     self.state.cli.agent.perform_action,
