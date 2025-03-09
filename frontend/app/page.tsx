@@ -4,7 +4,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useWallet } from "./providers/WalletProvider";
 import { AppLayout } from "./components/app-layout";
-import StarfieldBackground from "./components/GridBackground";
 import { Button } from "@/components/ui/button";
 
 export default function Home(): JSX.Element {
@@ -18,9 +17,9 @@ export default function Home(): JSX.Element {
     const savedAuth = localStorage.getItem("isAuthenticated") === "true";
     setIsAuthenticated(isConnected || savedAuth);
 
-    // If authenticated, redirect to dashboard
+    // If authenticated, redirect to marketplace
     if (isConnected || savedAuth) {
-      router.push("/dashboard");
+      router.push("/marketplace");
     }
   }, [isConnected, router]);
 
@@ -30,39 +29,29 @@ export default function Home(): JSX.Element {
       // If not connected, try to connect wallet
       if (!isConnected) {
         await connect();
-        // The WalletProvider will handle redirection to dashboard after successful connection
+        // The WalletProvider will handle redirection to marketplace after successful connection
       } else {
-        // If already connected, just navigate to dashboard
-        router.push("/dashboard");
+        // If already connected, just navigate to marketplace
+        router.push("/marketplace");
       }
     } catch (error) {
       console.error("Failed to connect wallet:", error);
-      router.push("/dashboard");
+      router.push("/marketplace");
     }
   };
 
   return (
     <AppLayout showFooter={false}>
-      {/* Starfield Background */}
-      <StarfieldBackground />
-
       {/* Main Content */}
-      <div
-        className="fixed inset-0 flex items-center justify-center"
-        style={{ zIndex: 10 }}
-      >
-        <section className="w-full flex flex-col items-center justify-center">
+      <div className="relative min-h-screen flex items-center justify-center z-10">
+        <section className="w-full flex flex-col items-center justify-center py-20">
           <div className="container mx-auto px-4 flex items-center justify-center">
-            <div className="py-16 md:py-24 max-w-3xl w-full text-center space-y-8">
+            <div className="py-16 md:py-24 max-w-3xl w-full text-center space-y-8 bg-black/50 backdrop-blur-sm rounded-xl p-8 border border-retro-green/20">
               {/* New badge */}
               <div className="flex items-center justify-center">
                 <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full text-sm">
-                  <span className="bg-gradient-to-r from-sky-400 to-blue-500 text-white text-xs px-2 py-0.5 rounded-full">
-                    New
-                  </span>
-                  <span className="flex items-center gap-2 text-white">
-                    Multi-AI Agent Framework for Market Prediction, Smart
-                    Trading, Token Launching & On-Chain Betting
+                  <span className="bg-gradient-to-r from-green-400 to-green-600 text-black text-xs px-2 py-0.5 rounded-full">
+                    ONLY ON SONIC LABS
                   </span>
                 </div>
               </div>
@@ -70,29 +59,20 @@ export default function Home(): JSX.Element {
               {/* Hero content */}
               <div className="space-y-8 flex flex-col items-center">
                 <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-center text-white">
-                  HYPER
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500 hover:glow">
-                    SONIC
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
+                    NORUGZ
                   </span>
                 </h1>
                 <p className="text-lg text-gray-300 text-center max-w-2xl mx-auto">
-                  Built on Sonic - the high-performance EVM blockchain built for
-                  DeFi and Web3 innovation
+                  SIMPLIFY TOKEN LAUNCHING & MARKETING
                 </p>
                 <div className="flex justify-center gap-4 mt-4">
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 text-white rounded-full px-8 hover:glow"
+                    className="bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-black rounded-full px-8 hover:glow font-pixel"
                     onClick={handleConnectWallet}
                   >
-                    Let's GOO!
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="rounded-full px-8 hover:glow text-white border-white"
-                  >
-                    View Demo
+                    GET STARTED!
                   </Button>
                 </div>
               </div>
@@ -104,14 +84,14 @@ export default function Home(): JSX.Element {
         <style jsx global>{`
           @keyframes glow {
             0% {
-              text-shadow: 0 0 5px rgba(56, 189, 248, 0.5);
+              text-shadow: 0 0 5px rgba(74, 222, 128, 0.5);
             }
             50% {
-              text-shadow: 0 0 10px rgba(56, 189, 248, 0.7),
-                0 0 15px rgba(59, 130, 246, 0.5);
+              text-shadow: 0 0 10px rgba(74, 222, 128, 0.7),
+                0 0 15px rgba(74, 222, 128, 0.5);
             }
             100% {
-              text-shadow: 0 0 5px rgba(56, 189, 248, 0.5);
+              text-shadow: 0 0 5px rgba(74, 222, 128, 0.5);
             }
           }
 

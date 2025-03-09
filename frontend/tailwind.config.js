@@ -1,29 +1,21 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
-    "*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    container: {
-      center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
-    },
     extend: {
-      backgroundImage: {
-        "grid-green-400/30":
-          "linear-gradient(to right, #4ade80/30 1px, transparent 1px), linear-gradient(to bottom, #4ade80/30 1px, transparent 1px)",
-      },
-      backgroundSize: {
-        "grid-8": "8px 8px",
+      fontFamily: {
+        sans: ["var(--font-press-start-2p)"],
+        mono: ["var(--font-vt323)"],
+        clean: ["Arial", "Helvetica", "sans-serif"],
       },
       colors: {
+        "retro-green": "#4ade80",
+        "retro-black": "#000",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -63,22 +55,17 @@ module.exports = {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
-      keyframes: {
-        "accordion-down": {
-          from: { height: 0 },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: 0 },
-        },
+      backgroundImage: {
+        "grid-green-400":
+          "linear-gradient(to right, #4ade80 1px, transparent 1px), linear-gradient(to bottom, #4ade80 1px, transparent 1px)",
       },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+      backgroundSize: {
+        "grid-8": "8px 8px",
+      },
+      backgroundColor: {
+        "gray-850": "#1f2937",
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
-
+  plugins: [require("@tailwindcss/typography"), require("tailwindcss-animate")],
+};

@@ -10,24 +10,15 @@ import { AuthRequired } from "../components/auth-required";
 const PROTECTED_ROUTES = [
   "/dashboard",
   "/portfolio",
-  "/bets/my-bets",
   "/my-tokens",
   "/hedgebots",
   "/watchlist",
   "/settings",
   "/launch",
-  "/bets/create",
 ];
 
 // Routes that should be accessible without authentication
-const PUBLIC_ROUTES = [
-  "/",
-  "/marketcap",
-  "/marketplace",
-  "/bets",
-  "/trading",
-  "/communities",
-];
+const PUBLIC_ROUTES = ["/", "/marketplace", "/trading", "/communities"];
 
 interface AuthGuardProps {
   children: ReactNode;

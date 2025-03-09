@@ -4,69 +4,278 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
-    --radius: 0.5rem;
+    /* Light mode colors */
+    --foreground-rgb: 17, 24, 39;
+    --background-start-rgb: 255, 255, 255;
+    --background-end-rgb: 255, 255, 255;
   }
 
   .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    /* Dark mode colors */
+    --foreground-rgb: 74, 222, 128;
+    --background-start-rgb: 17, 24, 39;
+    --background-end-rgb: 17, 24, 39;
   }
-}
 
-@layer base {
-  * {
-    @apply border-border;
-  }
   body {
-    @apply bg-background text-foreground;
+    @apply text-retro-black bg-white antialiased;
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgb(var(--background-end-rgb))
+      )
+      rgb(var(--background-start-rgb));
+  }
+
+  .dark body {
+    @apply text-retro-green bg-gray-900;
   }
 }
 
-.bg-grid-green-400\/30 {
-  background-image: linear-gradient(
-      to right,
-      rgba(74, 222, 128, 0.3) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, rgba(74, 222, 128, 0.3) 1px, transparent 1px);
+/* Typography */
+.font-pixel {
+  font-family: var(--font-press-start-2p);
+  letter-spacing: -1px;
+  /* Only apply text-shadow if not using text-retro-black */
 }
 
-.bg-grid-8 {
-  background-size: 8px 8px;
+/* Apply text shadow to font-pixel elements that don't have text-retro-black class */
+.font-pixel:not(.text-retro-black) {
+  text-shadow: 0 0 5px rgba(74, 222, 128, 0.7);
+}
+
+.dark .font-pixel:not(.text-retro-black) {
+  text-shadow: 0 0 5px rgba(74, 222, 128, 0.7), 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+.font-mono {
+  font-family: var(--font-vt323);
+  @apply text-retro-black;
+}
+
+.dark .font-mono {
+  @apply text-retro-green;
+}
+
+/* Cards */
+.dashboard-card {
+  @apply bg-black/40 backdrop-blur-sm border border-blue-500/20 rounded-lg overflow-hidden;
+  @apply hover:shadow-[0_0_15px_rgba(59,130,246,0.3)] transition-all duration-300;
+}
+
+/* Text effects */
+.glow-text {
+  @apply text-retro-green;
+  text-shadow: 0 0 5px rgba(74, 222, 128, 0.7);
+}
+
+.glow-border {
+  @apply border border-retro-green;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+/* Chat styling */
+.chatbot-message {
+  @apply p-4 rounded-lg mb-4 max-w-[80%];
+}
+
+.chatbot-user-message {
+  @apply bg-blue-900/30 border border-blue-500/30 ml-auto;
+}
+
+.chatbot-assistant-message {
+  @apply bg-green-900/30 border border-green-500/30;
+}
+
+/* Pixelated border */
+.pixelated-border {
+  @apply relative;
+  box-shadow: 0 0 0 2px #1f2937, 0 0 0 4px #4ade80, 0 0 0 6px #1f2937,
+    0 0 15px rgba(74, 222, 128, 0.3);
+}
+
+.dark .pixelated-border {
+  box-shadow: 0 0 0 2px #4ade80, 0 0 0 4px #000, 0 0 0 6px #4ade80,
+    0 0 15px rgba(74, 222, 128, 0.3);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-gray-900;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-retro-green/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-retro-green/70;
+}
+
+/* Utilities */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .backdrop-blur-sm {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+/* Grid layout */
+.grid-dashboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+/* Text shadow */
+.text-shadow-retro {
+  text-shadow: 0 0 5px rgba(74, 222, 128, 0.7);
+}
+
+.dark .text-shadow-retro {
+  text-shadow: 0 0 5px rgba(74, 222, 128, 0.7), 0 0 10px rgba(74, 222, 128, 0.5);
+}
+
+/* Animations */
+.animate-glow {
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px rgba(74, 222, 128, 0.7),
+      0 0 10px rgba(74, 222, 128, 0.5);
+  }
+  to {
+    text-shadow: 0 0 10px rgba(74, 222, 128, 0.9),
+      0 0 20px rgba(74, 222, 128, 0.7), 0 0 30px rgba(74, 222, 128, 0.5);
+  }
+}
+
+/* Tab styling */
+[data-state="active"][role="tab"] {
+  @apply bg-retro-green/20 text-retro-green border-b-2 border-retro-green;
+}
+
+[data-state="inactive"][role="tab"] {
+  @apply text-gray-400 hover:text-retro-green/70 transition-colors;
+}
+
+[role="tab"] {
+  @apply px-4 py-2 font-medium;
+}
+
+[role="tablist"] {
+  @apply flex border-b border-gray-800;
+}
+
+.glitch {
+  position: relative;
+  animation: glitch 1s linear infinite;
+  @apply text-retro-green;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -2px 0 #ff00ff;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch 5s linear infinite alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: -2px 0 #00ffff;
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch 5s linear infinite alternate-reverse;
+}
+
+@keyframes glitch {
+  0% {
+    clip: rect(31px, 9999px, 94px, 0);
+  }
+  5% {
+    clip: rect(70px, 9999px, 71px, 0);
+  }
+  10% {
+    clip: rect(29px, 9999px, 83px, 0);
+  }
+  15% {
+    clip: rect(16px, 9999px, 91px, 0);
+  }
+  20% {
+    clip: rect(2px, 9999px, 23px, 0);
+  }
+  25% {
+    clip: rect(46px, 9999px, 33px, 0);
+  }
+  30% {
+    clip: rect(94px, 9999px, 30px, 0);
+  }
+  35% {
+    clip: rect(69px, 9999px, 65px, 0);
+  }
+  40% {
+    clip: rect(41px, 9999px, 27px, 0);
+  }
+  45% {
+    clip: rect(88px, 9999px, 85px, 0);
+  }
+  50% {
+    clip: rect(53px, 9999px, 40px, 0);
+  }
+  55% {
+    clip: rect(4px, 9999px, 5px, 0);
+  }
+  60% {
+    clip: rect(89px, 9999px, 14px, 0);
+  }
+  65% {
+    clip: rect(82px, 9999px, 47px, 0);
+  }
+  70% {
+    clip: rect(97px, 9999px, 59px, 0);
+  }
+  75% {
+    clip: rect(36px, 9999px, 79px, 0);
+  }
+  80% {
+    clip: rect(55px, 9999px, 13px, 0);
+  }
+  85% {
+    clip: rect(84px, 9999px, 34px, 0);
+  }
+  90% {
+    clip: rect(95px, 9999px, 74px, 0);
+  }
+  95% {
+    clip: rect(79px, 9999px, 76px, 0);
+  }
+  100% {
+    clip: rect(19px, 9999px, 17px, 0);
+  }
+}
+
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

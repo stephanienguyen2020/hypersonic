@@ -351,7 +351,7 @@ export default function TokenDetailPage() {
       navigator
         .share({
           title: `${token?.name} (${token?.symbol})`,
-          text: `Check out ${token?.name} on HyperSonic!`,
+          text: `Check out ${token?.name} on NoRugz!`,
           url: window.location.href,
         })
         .catch((err) => {

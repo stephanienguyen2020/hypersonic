@@ -84,7 +84,7 @@ const filterOptions: FilterOption[] = [
 ];
 
 // Helper functions for watchlist management
-const WATCHLIST_STORAGE_KEY = "hedgefi_watchlist";
+const WATCHLIST_STORAGE_KEY = "norugz_watchlist";
 
 const getWatchlistFromStorage = (): string[] => {
   if (typeof window === "undefined") return [];

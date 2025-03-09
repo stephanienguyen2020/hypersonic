@@ -265,11 +265,6 @@ export function SiteLeftbar() {
               isActive={pathname === "/dashboard/quick-swap"}
             />
             <SubNavItem
-              label="My Bets"
-              href="/dashboard/my-bets"
-              isActive={pathname === "/dashboard/my-bets"}
-            />
-            <SubNavItem
               label="My Tokens"
               href="/dashboard/my-tokens"
               isActive={pathname === "/dashboard/my-tokens"}

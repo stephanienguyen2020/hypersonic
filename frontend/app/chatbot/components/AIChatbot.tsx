@@ -491,7 +491,7 @@ function AIChatbotContent() {
               <Brain className="w-8 h-8 text-primary" />
             </div>
             <h1 className="text-4xl font-bold">
-              HyperSonic{" "}
+              NoRugz{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500">
                 Bot
               </span>

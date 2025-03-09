@@ -100,22 +100,23 @@ class TextScramble {
   }
 }
 
-// Matrix-style connect button for when not using RainbowKit
+// Retro-pixel connect button for when not using RainbowKit
 const MatrixConnectButton = () => {
   const router = useRouter();
   const { connect, isConnected } = useWallet();
   const [buttonHovered, setButtonHovered] = useState(false);
+  const [buttonPressed, setButtonPressed] = useState(false);
 
   const handleConnectClick = async () => {
     try {
       if (!isConnected) {
         await connect();
       } else {
-        router.push("/dashboard");
+        router.push("/marketplace");
       }
     } catch (error) {
       console.error("Failed to connect wallet:", error);
-      router.push("/dashboard");
+      router.push("/marketplace");
     }
   };
 
@@ -124,21 +125,52 @@ const MatrixConnectButton = () => {
       onClick={handleConnectClick}
       onMouseEnter={() => setButtonHovered(true)}
       onMouseLeave={() => setButtonHovered(false)}
-      className={`px-4 py-2 rounded-md text-sm font-bold transition-all duration-300 ${
-        buttonHovered
-          ? "bg-sky-400 text-black shadow-[0_0_10px_rgba(56,189,248,0.7)]"
-          : "bg-transparent border border-sky-400 text-sky-400"
-      }`}
+      onMouseDown={() => setButtonPressed(true)}
+      onMouseUp={() => setButtonPressed(false)}
+      className={`
+        font-pixel text-xs px-4 py-2 relative
+        ${
+          buttonPressed
+            ? "translate-y-[2px] shadow-none"
+            : "shadow-[2px_2px_0px_#000]"
+        }
+        ${
+          buttonHovered
+            ? "bg-retro-green text-black border-2 border-black"
+            : "bg-black text-retro-green border-2 border-retro-green"
+        }
+        transition-all duration-100
+      `}
+      style={{
+        clipPath: buttonHovered
+          ? "polygon(0% 10%, 5% 0%, 95% 0%, 100% 10%, 100% 90%, 95% 100%, 5% 100%, 0% 90%)"
+          : "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      }}
     >
-      <div className="flex items-center">
-        <Wallet className="mr-2 h-4 w-4" />
-        <span>{isConnected ? "DASHBOARD" : "CONNECT"}</span>
+      <div className="flex items-center justify-center">
+        <Wallet
+          className={`mr-2 h-4 w-4 ${
+            buttonHovered ? "text-black" : "text-retro-green"
+          }`}
+        />
+        <span className={`${buttonHovered ? "animate-pulse" : ""}`}>
+          {isConnected ? "DASHBOARD" : "CONNECT"}
+        </span>
       </div>
+      {buttonHovered && (
+        <div
+          className="absolute -inset-[1px] border border-retro-green opacity-50 animate-pulse"
+          style={{
+            clipPath:
+              "polygon(0% 10%, 5% 0%, 95% 0%, 100% 10%, 100% 90%, 95% 100%, 5% 100%, 0% 90%)",
+          }}
+        />
+      )}
     </button>
   );
 };
 
-// Matrix-styled RainbowKit ConnectButton
+// Retro-pixel styled RainbowKit ConnectButton
 const MatrixRainbowButton = () => {
   return (
     <ConnectButton.Custom>
@@ -151,8 +183,6 @@ const MatrixRainbowButton = () => {
         authenticationStatus,
         mounted,
       }) => {
-        // Note: If your app doesn't use authentication, you
-        // can remove all 'authenticationStatus' checks
         const ready = mounted && authenticationStatus !== "loading";
         const connected =
           ready &&
@@ -177,9 +207,26 @@ const MatrixRainbowButton = () => {
                   <button
                     onClick={openConnectModal}
                     type="button"
-                    className="px-4 py-2 rounded-md text-sm font-bold transition-all duration-300 bg-transparent border border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-black hover:shadow-[0_0_10px_rgba(56,189,248,0.7)]"
+                    className={`
+                      font-pixel text-xs px-4 py-2 relative
+                      bg-black text-retro-green border-2 border-retro-green
+                      shadow-[2px_2px_0px_#000]
+                      hover:bg-retro-green hover:text-black hover:border-black
+                      transition-all duration-100
+                    `}
+                    style={{
+                      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.clipPath =
+                        "polygon(0% 10%, 5% 0%, 95% 0%, 100% 10%, 100% 90%, 95% 100%, 5% 100%, 0% 90%)";
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.clipPath =
+                        "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
+                    }}
                   >
-                    <div className="flex items-center">
+                    <div className="flex items-center justify-center">
                       <Wallet className="mr-2 h-4 w-4" />
                       <span>CONNECT</span>
                     </div>
@@ -192,9 +239,9 @@ const MatrixRainbowButton = () => {
                   <button
                     onClick={openChainModal}
                     type="button"
-                    className="px-4 py-2 rounded-md text-sm font-bold transition-all duration-300 bg-transparent border border-red-500 text-red-500 hover:bg-red-500 hover:text-black hover:shadow-[0_0_10px_rgba(255,0,0,0.7)]"
+                    className="font-pixel text-xs px-4 py-2 bg-red-600 text-white border-2 border-black shadow-[2px_2px_0px_#000]"
                   >
-                    Wrong network
+                    Wrong Network
                   </button>
                 );
               }
@@ -204,44 +251,63 @@ const MatrixRainbowButton = () => {
                   <button
                     onClick={openChainModal}
                     type="button"
-                    className="px-4 py-2 rounded-md text-sm font-bold transition-all duration-300 bg-transparent border border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-black hover:shadow-[0_0_10px_rgba(56,189,248,0.7)]"
+                    className="font-pixel text-xs px-3 py-1 bg-black text-retro-green border-2 border-retro-green shadow-[2px_2px_0px_#000] hover:bg-retro-green hover:text-black hover:border-black transition-all duration-100"
+                    style={{
+                      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.clipPath =
+                        "polygon(0% 10%, 5% 0%, 95% 0%, 100% 10%, 100% 90%, 95% 100%, 5% 100%, 0% 90%)";
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.clipPath =
+                        "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
+                    }}
                   >
-                    <div className="flex items-center">
-                      {chain.hasIcon && (
-                        <div
-                          style={{
-                            background: chain.iconBackground,
-                            width: 16,
-                            height: 16,
-                            borderRadius: 999,
-                            overflow: "hidden",
-                            marginRight: 6,
-                          }}
-                        >
-                          {chain.iconUrl && (
-                            <img
-                              alt={chain.name ?? "Chain icon"}
-                              src={chain.iconUrl}
-                              style={{ width: 16, height: 16 }}
-                            />
-                          )}
-                        </div>
-                      )}
-                      {chain.name}
-                    </div>
+                    {chain.hasIcon && (
+                      <div
+                        style={{
+                          background: chain.iconBackground,
+                          width: 16,
+                          height: 16,
+                          borderRadius: 999,
+                          overflow: "hidden",
+                          marginRight: 4,
+                        }}
+                      >
+                        {chain.iconUrl && (
+                          <img
+                            alt={chain.name ?? "Chain icon"}
+                            src={chain.iconUrl}
+                            style={{ width: 16, height: 16 }}
+                          />
+                        )}
+                      </div>
+                    )}
+                    {chain.name}
                   </button>
 
                   <button
                     onClick={openAccountModal}
                     type="button"
-                    className="px-4 py-2 rounded-md text-sm font-bold transition-all duration-300 bg-transparent border border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-black hover:shadow-[0_0_10px_rgba(56,189,248,0.7)]"
+                    className="font-pixel text-xs px-3 py-1 bg-black text-retro-green border-2 border-retro-green shadow-[2px_2px_0px_#000] hover:bg-retro-green hover:text-black hover:border-black transition-all duration-100"
+                    style={{
+                      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.clipPath =
+                        "polygon(0% 10%, 5% 0%, 95% 0%, 100% 10%, 100% 90%, 95% 100%, 5% 100%, 0% 90%)";
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.clipPath =
+                        "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)";
+                    }}
                   >
                     <div className="flex items-center">
-                      <Wallet className="mr-2 h-4 w-4" />
-                      {account.displayName}
-                      {account.displayBalance
-                        ? ` (${account.displayBalance})`
-                        : ""}
+                      {account.displayBalance ? (
+                        <span className="mr-1">{account.displayBalance}</span>
+                      ) : null}
+                      <span className="font-pixel">{account.displayName}</span>
                     </div>
                   </button>
                 </div>
@@ -280,7 +346,7 @@ export function SiteHeader() {
   // Apply text scramble effect on hover
   const handleLogoHover = () => {
     if (scramblerRef.current) {
-      scramblerRef.current.setText("HYPERSONIC");
+      scramblerRef.current.setText("NORUGZ");
     }
   };
 
@@ -324,20 +390,15 @@ export function SiteHeader() {
   }, [isConnected, address]);
 
   const publicMenuItems = useMemo(
-    (): NavItem[] => [
-      { label: "Marketcap", href: "/marketcap" },
-      { label: "Marketplace", href: "/marketplace" },
-      { label: "Bets", href: "/bets" },
-    ],
+    (): NavItem[] => [{ label: "Marketplace", href: "/marketplace" }],
     []
   );
 
   // Additional menu items for authenticated users
   const authenticatedMenuItems = useMemo(
     (): NavItem[] => [
-      { label: "Launch Tokens", href: "/launch" },
-      { label: "Create Bets", href: "/bets/create" },
-      { label: "Quick Swap", href: "/dashboard/quick-swap" },
+      { label: "My Tokens", href: "/my-tokens" },
+      { label: "Settings", href: "/settings" },
     ],
     []
   );
@@ -358,16 +419,16 @@ export function SiteHeader() {
           {/* Logo - aligned to the left edge of the screen */}
           <div className="flex-shrink-0">
             <Link
-              href="/dashboard"
+              href="/marketplace"
               className="flex items-center space-x-2"
               onMouseEnter={handleLogoHover}
             >
               <span
                 ref={logoRef}
-                className="text-2xl font-bold text-sky-400 font-mono"
-                style={{ textShadow: "0 0 5px rgba(56,189,248,0.7)" }}
+                className="text-2xl font-bold text-retro-green font-pixel"
+                style={{ textShadow: "0 0 5px rgba(74, 222, 128, 0.7)" }}
               >
-                HYPERSONIC
+                NORUGZ
               </span>
             </Link>
           </div>

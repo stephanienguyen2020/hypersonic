@@ -5,20 +5,9 @@ import { AppLayout } from "../components/app-layout";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ProfileSettings } from "./components/profile-settings";
 import { SocialSettings } from "./components/social-settings";
-import { NotificationSettings } from "./components/notification-settings";
-import { SecuritySettings } from "./components/security-settings";
-import { AISettings } from "./components/ai-settings";
 import { PreferenceSettings } from "./components/preference-settings";
 import { WalletSettings } from "./components/wallet-settings";
-import {
-  User,
-  Share2,
-  Bell,
-  Shield,
-  Bot,
-  Settings2,
-  Wallet,
-} from "lucide-react";
+import { User, Share2, Settings2, Wallet } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { useAccount } from "wagmi";
 import { useWallet } from "../providers/WalletProvider";
@@ -42,7 +31,7 @@ export default function SettingsPage() {
 
   return (
     <AppLayout showFooter={false}>
-      <div className="min-h-screen bg-gradient-to-b from-black to-gray-900">
+      <div className="min-h-screen bg-gradient-to-b ">
         <div className="container max-w-7xl mx-auto px-4 py-8 relative z-10">
           {/* Header */}
           <motion.div
@@ -70,52 +59,31 @@ export default function SettingsPage() {
           {/* Settings Tabs */}
           <Tabs defaultValue="profile" className="space-y-8">
             <div className="overflow-x-auto pb-2">
-              <TabsList className="bg-white/5 p-1 rounded-lg inline-flex min-w-full lg:grid lg:grid-cols-7 gap-4">
+              <TabsList className="bg-white/5 p-1 rounded-lg inline-flex min-w-full lg:grid lg:grid-cols-4 gap-4">
                 <TabsTrigger
                   value="profile"
-                  className="data-[state=active]:bg-blue-500 gap-2 whitespace-nowrap"
+                  className="data-[state=active]:bg-black/50 gap-2 whitespace-nowrap"
                 >
                   <User className="h-4 w-4" />
                   Profile
                 </TabsTrigger>
                 <TabsTrigger
                   value="wallet"
-                  className="data-[state=active]:bg-blue-500 gap-2 whitespace-nowrap"
+                  className="data-[state=active]:bg-black/50 gap-2 whitespace-nowrap"
                 >
                   <Wallet className="h-4 w-4" />
                   Wallet
                 </TabsTrigger>
                 <TabsTrigger
                   value="social"
-                  className="data-[state=active]:bg-blue-500 gap-2 whitespace-nowrap"
+                  className="data-[state=active]:bg-black/50 gap-2 whitespace-nowrap"
                 >
                   <Share2 className="h-4 w-4" />
                   Social
                 </TabsTrigger>
                 <TabsTrigger
-                  value="notifications"
-                  className="data-[state=active]:bg-blue-500 gap-2 whitespace-nowrap"
-                >
-                  <Bell className="h-4 w-4" />
-                  Notifications
-                </TabsTrigger>
-                <TabsTrigger
-                  value="security"
-                  className="data-[state=active]:bg-blue-500 gap-2 whitespace-nowrap"
-                >
-                  <Shield className="h-4 w-4" />
-                  Security
-                </TabsTrigger>
-                <TabsTrigger
-                  value="ai"
-                  className="data-[state=active]:bg-blue-500 gap-2 whitespace-nowrap"
-                >
-                  <Bot className="h-4 w-4" />
-                  AI Settings
-                </TabsTrigger>
-                <TabsTrigger
                   value="preferences"
-                  className="data-[state=active]:bg-blue-500 gap-2 whitespace-nowrap"
+                  className="data-[state=active]:bg-black/50 gap-2 whitespace-nowrap"
                 >
                   <Settings2 className="h-4 w-4" />
                   Preferences
@@ -139,18 +107,6 @@ export default function SettingsPage() {
 
               <TabsContent value="social" className="mt-0">
                 <SocialSettings />
-              </TabsContent>
-
-              <TabsContent value="notifications" className="mt-0">
-                <NotificationSettings />
-              </TabsContent>
-
-              <TabsContent value="security" className="mt-0">
-                <SecuritySettings />
-              </TabsContent>
-
-              <TabsContent value="ai" className="mt-0">
-                <AISettings />
               </TabsContent>
 
               <TabsContent value="preferences" className="mt-0">

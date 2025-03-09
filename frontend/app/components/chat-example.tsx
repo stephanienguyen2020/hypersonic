@@ -5,10 +5,10 @@ export function ChatExample() {
     <div className="flex flex-col gap-6">
       <ChatMessage
         isBot={true}
-        text="Hello! I'm HyperSonic, your AI assistant for meme coin predictions. How can I help you today?"
-        name="HyperSonic"
+        text="Hello! I'm NoRugz AI, your assistant for meme coin predictions. How can I help you today?"
+        name="NoRugz AI"
         timestamp="2:30 PM"
-        avatar="/hedgefi-bot.png"
+        avatar="/norugz-bot.png"
       />
       <ChatMessage
         isBot={false}
@@ -26,9 +26,9 @@ export function ChatExample() {
 3. A new coin $WSM (Wall Street Memes) is launching soon
 
 Would you like me to provide more detailed analysis on any of these?`}
-        name="HyperSonic"
+        name="NoRugz AI"
         timestamp="2:31 PM"
-        avatar="/hedgefi-bot.png"
+        avatar="/norugz-bot.png"
       />
     </div>
   );

@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { Twitter, MessageCircle, Check, AlertTriangle } from "lucide-react";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 
 export function SocialSettings() {
   return (
@@ -81,11 +82,12 @@ export function SocialSettings() {
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="flex items-center gap-4 p-4 rounded-lg bg-black/40 border border-white/10">
-            <div className="flex items-center gap-3">
-              <div className="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center">
-                <MessageCircle className="h-5 w-5 text-white" />
-              </div>
-              <p className="font-medium">HyperSonic Bot</p>
+            <div className="flex items-center space-x-2">
+              <Avatar className="h-8 w-8">
+                <AvatarImage src="/telegram-bot.png" alt="Telegram Bot" />
+                <AvatarFallback>TB</AvatarFallback>
+              </Avatar>
+              <p className="font-medium">NoRugz Bot</p>
             </div>
             <Button>Connect</Button>
           </div>
@@ -93,7 +95,7 @@ export function SocialSettings() {
           <div className="flex items-center gap-2 p-4 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
             <AlertTriangle className="h-5 w-5 text-yellow-500" />
             <p className="text-sm text-yellow-500">
-              Start a chat with @HyperSonicBot on Telegram and use the command
+              Start a chat with @NoRugzBot on Telegram and use the command
               /connect to link your account.
             </p>
           </div>

@@ -1,15 +1,27 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Label } from "@/components/ui/label"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { Switch } from "@/components/ui/switch"
-import { Slider } from "@/components/ui/slider"
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
-import { Clock, MessageCircle, Hash, ImageIcon, Save } from "lucide-react"
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
+import { Slider } from "@/components/ui/slider";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { Clock, MessageCircle, Hash, ImageIcon, Save } from "lucide-react";
 
 export function AutoShillSettings() {
   return (
@@ -21,7 +33,9 @@ export function AutoShillSettings() {
             <Clock className="h-5 w-5 text-sky-400" />
             <div>
               <CardTitle>Tweet Frequency</CardTitle>
-              <CardDescription>Configure how often the AI should post</CardDescription>
+              <CardDescription>
+                Configure how often the AI should post
+              </CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -43,7 +57,12 @@ export function AutoShillSettings() {
             <div className="space-y-2">
               <Label>Posts Per Day</Label>
               <div className="flex items-center gap-4">
-                <Slider defaultValue={[8]} max={24} step={1} className="flex-1" />
+                <Slider
+                  defaultValue={[8]}
+                  max={24}
+                  step={1}
+                  className="flex-1"
+                />
                 <span className="w-12 text-center font-mono">8</span>
               </div>
             </div>
@@ -65,7 +84,9 @@ export function AutoShillSettings() {
             <MessageCircle className="h-5 w-5 text-sky-400" />
             <div>
               <CardTitle>Content Style</CardTitle>
-              <CardDescription>Customize the AI's posting style and tone</CardDescription>
+              <CardDescription>
+                Customize the AI's posting style and tone
+              </CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -73,8 +94,19 @@ export function AutoShillSettings() {
           <div className="space-y-4">
             <Label>Tweet Style</Label>
             <div className="flex flex-wrap gap-2">
-              {["Hype", "Informative", "Meme-Heavy", "Professional", "Casual", "Technical"].map((style) => (
-                <Badge key={style} variant="outline" className="cursor-pointer hover:bg-primary/10 transition-colors">
+              {[
+                "Hype",
+                "Informative",
+                "Meme-Heavy",
+                "Professional",
+                "Casual",
+                "Technical",
+              ].map((style) => (
+                <Badge
+                  key={style}
+                  variant="outline"
+                  className="cursor-pointer hover:bg-primary/10 transition-colors"
+                >
                   {style}
                 </Badge>
               ))}
@@ -108,22 +140,33 @@ export function AutoShillSettings() {
             <Hash className="h-5 w-5 text-sky-400" />
             <div>
               <CardTitle>Hashtags & Mentions</CardTitle>
-              <CardDescription>Manage hashtags and accounts to include in tweets</CardDescription>
+              <CardDescription>
+                Manage hashtags and accounts to include in tweets
+              </CardDescription>
             </div>
           </div>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-2">
             <Label>Primary Hashtags</Label>
-            <Input placeholder="Enter hashtags (comma separated)" defaultValue="#Crypto, #Memecoin, #WAGMI" />
+            <Input
+              placeholder="Enter hashtags (comma separated)"
+              defaultValue="#Crypto, #Memecoin, #WAGMI"
+            />
           </div>
           <div className="space-y-2">
             <Label>Secondary Hashtags</Label>
-            <Input placeholder="Enter hashtags (comma separated)" defaultValue="#DeFi, #NFTs, #Web3" />
+            <Input
+              placeholder="Enter hashtags (comma separated)"
+              defaultValue="#DeFi, #NFTs, #Web3"
+            />
           </div>
           <div className="space-y-2">
             <Label>Accounts to Mention</Label>
-            <Input placeholder="Enter usernames (comma separated)" defaultValue="@elonmusk, @VitalikButerin" />
+            <Input
+              placeholder="Enter usernames (comma separated)"
+              defaultValue="@elonmusk, @VitalikButerin"
+            />
           </div>
           <div className="flex items-center justify-between">
             <Label className="cursor-pointer">Randomize Hashtags</Label>
@@ -139,7 +182,9 @@ export function AutoShillSettings() {
             <ImageIcon className="h-5 w-5 text-sky-400" />
             <div>
               <CardTitle>Meme Integration</CardTitle>
-              <CardDescription>Configure AI meme generation settings</CardDescription>
+              <CardDescription>
+                Configure AI meme generation settings
+              </CardDescription>
             </div>
           </div>
         </CardHeader>
@@ -164,11 +209,17 @@ export function AutoShillSettings() {
           <div className="space-y-2">
             <Label>Meme Style</Label>
             <div className="flex flex-wrap gap-2">
-              {["Classic", "Modern", "Dank", "Wholesome", "Edgy", "Meta"].map((style) => (
-                <Badge key={style} variant="outline" className="cursor-pointer hover:bg-primary/10 transition-colors">
-                  {style}
-                </Badge>
-              ))}
+              {["Classic", "Modern", "Dank", "Wholesome", "Edgy", "Meta"].map(
+                (style) => (
+                  <Badge
+                    key={style}
+                    variant="outline"
+                    className="cursor-pointer hover:bg-primary/10 transition-colors"
+                  >
+                    {style}
+                  </Badge>
+                )
+              )}
             </div>
           </div>
         </CardContent>
@@ -182,6 +233,5 @@ export function AutoShillSettings() {
         </Button>
       </div>
     </div>
-  )
+  );
 }
-

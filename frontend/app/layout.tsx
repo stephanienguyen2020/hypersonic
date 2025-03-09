@@ -1,12 +1,34 @@
-import { monaSans } from "./fonts";
-import { cn } from "@/lib/utils";
+import type React from "react";
+import { Press_Start_2P, VT323 } from "next/font/google";
+import MatrixBackground from "./components/GridBackground";
+import SoundEffect from "./components/SoundEffect";
+import { Metadata } from "next";
 import { Providers } from "./providers";
+import { SiteHeader } from "./components/site-header";
+import { cn } from "@/lib/utils";
+import { Mona_Sans } from "next/font/google";
 import "./globals.css";
-import type React from "react"; // Import React
 
-export const metadata = {
-  title: "HyperSonic",
-  description: "One-stop shop for all your meme coin needs",
+const monaSans = Mona_Sans({
+  subsets: ["latin"],
+  variable: "--font-mona-sans",
+});
+
+const pressStart2P = Press_Start_2P({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-press-start-2p",
+});
+
+const vt323 = VT323({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-vt323",
+});
+
+export const metadata: Metadata = {
+  title: "NoRugz",
+  description: "AI-powered meme coin platform",
 };
 
 export default function RootLayout({
@@ -18,11 +40,15 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
-          "min-h-screen bg-background font-sans antialiased",
-          monaSans.variable
+          "min-h-screen bg-gray-900 font-sans antialiased text-retro-green",
+          monaSans.variable,
+          pressStart2P.variable,
+          vt323.variable
         )}
       >
+        <MatrixBackground />
         <Providers>{children}</Providers>
+        <SoundEffect />
       </body>
     </html>
   );

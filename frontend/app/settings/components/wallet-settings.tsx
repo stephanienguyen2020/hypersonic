@@ -302,11 +302,11 @@ export function WalletSettings() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h3 className="text-lg font-medium">Wallet Settings</h3>
-        <CardDescription>
-          Manage your credits and wallet connection for HyperSonic.
-        </CardDescription>
+      <div className="space-y-1">
+        <h3 className="text-xl font-semibold">Wallet Settings</h3>
+        <p className="text-sm text-muted-foreground">
+          Manage your credits and wallet connection for NoRugz.
+        </p>
       </div>
 
       <div className="grid gap-6 md:grid-cols-2">

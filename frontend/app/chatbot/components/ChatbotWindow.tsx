@@ -46,7 +46,7 @@ export default function ChatbotWindow({ onClose }: ChatbotWindowProps) {
           <div className="h-8 w-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs">
             AI
           </div>
-          <div className="text-sm font-medium">HyperSonic Assistant</div>
+          <div className="text-sm font-medium">NoRugz Assistant</div>
         </div>
         <div className="flex items-center space-x-1">
           <Button

@@ -65,7 +65,7 @@ export function Chatbot() {
     {
       role: "assistant",
       content:
-        "Hi! I'm your HyperSonic assistant. I can help you analyze meme coins, spot trends, and identify potential rugs. What would you like to know?",
+        "Hi! I'm your NoRugz assistant. I can help you analyze meme coins, spot trends, and identify potential rugs. What would you like to know?",
       timestamp: getCurrentTime(),
     },
   ]);
@@ -206,7 +206,7 @@ export function Chatbot() {
                     <div className="h-8 w-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-xs">
                       AI
                     </div>
-                    <span className="font-medium">HyperSonic Assistant</span>
+                    <span className="font-medium">NoRugz Assistant</span>
                   </div>
                   <Button
                     variant="ghost"

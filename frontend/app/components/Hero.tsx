@@ -12,15 +12,14 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
           className="max-w-3xl mx-auto text-center"
         >
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
-            Build Discord Bots{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500">
-              With No Code
-            </span>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl">
+            <span className="block">The Future of</span>
+            <span className="block text-retro-green">Meme Coins</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-300 mb-8">
-            HyperSonic empowers you to create powerful Discord bots easily and
-            quickly, without writing a single line of code.
+          <p className="mt-6 text-lg leading-8 text-gray-300 max-w-3xl">
+            NoRugz empowers you to trade, create, and analyze meme coins with
+            AI-powered tools. Stay ahead of trends and avoid rugs with our
+            advanced platform.
           </p>
           <a
             href="#get-started"

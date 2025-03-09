@@ -614,7 +614,7 @@ export default function MarketplacePage() {
 
   return (
     <AppLayout showFooter={false}>
-      <div className="relative z-10">
+      <div className="relative z-10 min-h-screen ">
         <div className="container py-8">
           <div className="flex flex-col items-start justify-between gap-4 mb-8 md:flex-row md:items-center">
             <div>
@@ -649,14 +649,16 @@ export default function MarketplacePage() {
           </div>
 
           <div className="flex flex-col gap-4 mb-8 sm:flex-row">
-            <MarketFilters
-              chains={chains}
-              filterOptions={filterOptions}
-              selectedChain={selectedChain}
-              activeFilter={activeFilter}
-              onChainSelect={setSelectedChain}
-              onFilterSelect={setActiveFilter}
-            />
+            <div className="flex flex-wrap gap-2 overflow-x-auto pb-2 w-full">
+              <MarketFilters
+                chains={chains}
+                filterOptions={filterOptions}
+                selectedChain={selectedChain}
+                activeFilter={activeFilter}
+                onChainSelect={setSelectedChain}
+                onFilterSelect={setActiveFilter}
+              />
+            </div>
           </div>
 
           {/* Wallet Warning - show when wallet is not connected */}

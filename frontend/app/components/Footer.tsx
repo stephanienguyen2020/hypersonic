@@ -71,7 +71,7 @@ export function Footer() {
       </div> */}
       <div className="grid grid-cols-2 gap-12 md:grid-cols-4">
         <div className="flex flex-col gap-4">
-          <h3 className="text-lg font-semibold">HyperSonic</h3>
+          <h3 className="text-lg font-semibold">NoRugz</h3>
           <p className="text-gray-400">
             Predicting meme coin futures, so you don't have to sell your organs.
           </p>
@@ -161,7 +161,7 @@ export function Footer() {
       <Separator />
       <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
         <p className="text-sm text-muted-foreground">
-          © {new Date().getFullYear()} HyperSonic. All rights reserved.
+          © {new Date().getFullYear()} NoRugz. All rights reserved.
         </p>
         <div className="flex gap-4">
           <Link

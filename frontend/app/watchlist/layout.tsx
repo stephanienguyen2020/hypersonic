@@ -1,8 +1,8 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Watchlist | HyperSonic",
-  description: "One-stop shop for all your meme coin needs",
+  title: "Watchlist | NoRugz",
+  description: "Track your favorite meme coins",
 };
 
 export default function WatchlistLayout({
