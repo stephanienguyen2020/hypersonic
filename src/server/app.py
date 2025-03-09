@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, BackgroundTasks
+from fastapi.middleware.cors import CORSMiddleware
 
 from pydantic import BaseModel
 from typing import Optional, List, Dict, Any
@@ -78,6 +79,17 @@ class ZerePyServer:
         self.app = FastAPI(title="ZerePy Server")
         self.state = ServerState()
         self.setup_routes()
+        self.setup_cors()
+
+    def setup_cors(self):
+        """Configure CORS middleware"""
+        self.app.add_middleware(
+            CORSMiddleware,
+            allow_origins=["*"],  # Allows all origins
+            allow_credentials=True,
+            allow_methods=["*"],  # Allows all methods
+            allow_headers=["*"],  # Allows all headers
+        )
 
     def setup_routes(self):
         @self.app.get("/")
