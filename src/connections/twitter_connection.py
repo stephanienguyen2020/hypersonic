@@ -249,10 +249,6 @@ class TwitterConnection(BaseConnection):
             error_msg = f"{context} text cannot be empty"
             logger.error(error_msg)
             raise ValueError(error_msg)
-        if len(text) > 280:
-            error_msg = f"{context} exceeds 280 character limit"
-            logger.error(error_msg)
-            raise ValueError(error_msg)
         logger.debug(f"Tweet text validation passed for {context.lower()}")
 
     def configure(self) -> None:
