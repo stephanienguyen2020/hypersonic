@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import { useWallet } from "./providers/WalletProvider";
 import { AppLayout } from "./components/app-layout";
 import { Button } from "@/components/ui/button";
+import { ScrambleText } from "./components/ScrambleText";
+import { ColorChangeScrambleText } from "./components/ColorChangeScrambleText";
+import { NorugzLogo } from "./components/NorugzLogo";
 
 export default function Home(): JSX.Element {
   const router = useRouter();
@@ -58,13 +61,15 @@ export default function Home(): JSX.Element {
 
               {/* Hero content */}
               <div className="space-y-8 flex flex-col items-center">
-                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-center text-white">
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600">
-                    NORUGZ
-                  </span>
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-center text-gray-700">
+                  <NorugzLogo
+                    size="lg"
+                    color="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-green-600"
+                    hoverColor="text-white"
+                  />
                 </h1>
                 <p className="text-lg text-gray-300 text-center max-w-2xl mx-auto">
-                  SIMPLIFY TOKEN LAUNCHING & MARKETING
+                  SIMPLIFIED TOKEN LAUNCHING & MARKETING
                 </p>
                 <div className="flex justify-center gap-4 mt-4">
                   <Button
