@@ -177,12 +177,12 @@ const MatrixRainbowButton = () => {
                   <button
                     onClick={openConnectModal}
                     type="button"
-                    className="px-4 py-2 rounded-md text-sm font-bold transition-all duration-300 bg-transparent border border-sky-400 text-sky-400 hover:bg-sky-400 hover:text-black hover:shadow-[0_0_10px_rgba(56,189,248,0.7)]"
+                    className="px-4 py-2 rounded-md text-sm font-bold transition-all duration-300 bg-transparent border ]"
                   >
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                       <Wallet className="mr-2 h-4 w-4" />
                       <span>CONNECT</span>
-                    </div>
+                    </div> */}
                   </button>
                 );
               }
@@ -364,7 +364,7 @@ export function SiteHeader() {
             >
               <span
                 ref={logoRef}
-                className="text-2xl font-bold text-sky-400 font-mono"
+                className="text-2xl font-bold text-[#ff3b9e] font-mono"
                 style={{ textShadow: "0 0 5px rgba(56,189,248,0.7)" }}
               >
                 HYPERSONIC

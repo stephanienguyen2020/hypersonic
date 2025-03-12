@@ -280,31 +280,22 @@ export function TokenFormSection({
       return false;
     }
 
-    // All validations passed, show confirmation dialog
-    if (
-      window.confirm(
-        `Are you sure you want to create ${nameInput.value} (${symbolInput.value}) token?`
-      )
-    ) {
-      try {
-        // Prepare form data for submission
-        const formData = {
-          name: nameInput.value,
-          symbol: symbolInput.value,
-          description: descriptionInput?.value || "",
-        };
+    try {
+      // Prepare form data for submission
+      const formData = {
+        name: nameInput.value,
+        symbol: symbolInput.value,
+        description: descriptionInput?.value || "",
+      };
 
-        // Call the onSubmit function with the form data
-        onSubmit(formData);
-        return true;
-      } catch (error) {
-        console.error("Error creating token:", error);
-        onSubmit({ error: "An unexpected error occurred" });
-        return false;
-      }
+      // Call the onSubmit function with the form data
+      onSubmit(formData);
+      return true;
+    } catch (error) {
+      console.error("Error creating token:", error);
+      onSubmit({ error: "An unexpected error occurred" });
+      return false;
     }
-
-    return false;
   };
 
   return (

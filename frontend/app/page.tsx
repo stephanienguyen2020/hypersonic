@@ -57,7 +57,7 @@ export default function Home(): JSX.Element {
               {/* New badge */}
               <div className="flex items-center justify-center">
                 <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full text-sm">
-                  <span className="bg-gradient-to-r from-sky-400 to-blue-500 text-white text-xs px-2 py-0.5 rounded-full">
+                  <span className="bg-gradient-to-r from-[#E4067C] to-[#ff3b9e] text-white text-xs px-2 py-0.5 rounded-full">
                     New
                   </span>
                   <span className="flex items-center gap-2 text-white">
@@ -69,30 +69,47 @@ export default function Home(): JSX.Element {
 
               {/* Hero content */}
               <div className="space-y-8 flex flex-col items-center">
-                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-center text-white">
-                  HYPER
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 to-blue-500 hover:glow">
-                    SONIC
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-center">
+                  <span className="relative">
+                    <span className="text-white">HYPER</span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#E4067C] to-[#ff3b9e] hover:glow relative">
+                      SONIC
+                      <div className="absolute -bottom-2 left-0 w-full h-[2px] bg-gradient-to-r from-[#E4067C] to-[#ff3b9e] transform scale-x-0 transition-transform group-hover:scale-x-100"></div>
+                    </span>
+                    {/* Add subtle glow behind the text */}
+                    <div className="absolute -inset-2 bg-[#E4067C] opacity-10 blur-xl rounded-full"></div>
                   </span>
                 </h1>
                 <p className="text-lg text-gray-300 text-center max-w-2xl mx-auto">
                   Built on Sonic - the high-performance EVM blockchain built for
                   DeFi and Web3 innovation
                 </p>
-                <div className="flex justify-center gap-4 mt-4">
+                <div className="flex justify-center gap-6 mt-8">
                   <Button
                     size="lg"
-                    className="bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 text-white rounded-full px-8 hover:glow"
+                    className="relative group overflow-hidden px-8 py-6 rounded-xl bg-gradient-to-r from-[#E4067C] to-[#ff3b9e] transform hover:scale-105 transition-all duration-200"
                     onClick={handleConnectWallet}
                   >
-                    Let's GOO!
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="rounded-full px-8 hover:glow text-white border-white"
-                  >
-                    View Demo
+                    <div className="absolute inset-0 bg-white/20 group-hover:bg-white/30 transition-colors duration-200"></div>
+                    <div className="relative flex items-center gap-3">
+                      <span className="text-lg font-semibold text-white">
+                        Connect Wallet
+                      </span>
+                      <svg
+                        className="w-5 h-5 text-white transform group-hover:translate-x-1 transition-transform"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M14 5l7 7m0 0l-7 7m7-7H3"
+                        />
+                      </svg>
+                    </div>
+                    <div className="absolute -inset-1 bg-gradient-to-r from-[#E4067C] to-[#ff3b9e] opacity-30 blur group-hover:opacity-50 transition-opacity"></div>
                   </Button>
                 </div>
               </div>
@@ -104,19 +121,21 @@ export default function Home(): JSX.Element {
         <style jsx global>{`
           @keyframes glow {
             0% {
-              text-shadow: 0 0 5px rgba(56, 189, 248, 0.5);
+              text-shadow: 0 0 15px rgba(228, 6, 124, 0.3),
+                0 0 30px rgba(228, 6, 124, 0.2);
             }
             50% {
-              text-shadow: 0 0 10px rgba(56, 189, 248, 0.7),
-                0 0 15px rgba(59, 130, 246, 0.5);
+              text-shadow: 0 0 25px rgba(228, 6, 124, 0.5),
+                0 0 50px rgba(255, 59, 158, 0.3);
             }
             100% {
-              text-shadow: 0 0 5px rgba(56, 189, 248, 0.5);
+              text-shadow: 0 0 15px rgba(228, 6, 124, 0.3),
+                0 0 30px rgba(228, 6, 124, 0.2);
             }
           }
 
           .hover\\:glow:hover {
-            animation: glow 1.5s ease-in-out infinite;
+            animation: glow 2s ease-in-out infinite;
           }
         `}</style>
       </div>
